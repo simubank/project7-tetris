@@ -1,4 +1,4 @@
-package com.levelup.mutualfunds;
+package com.levelup.mutualfunds.modelEndpoint;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,7 +11,7 @@ import com.levelup.mutualfunds.model.Objects;
  * Root resource (exposed at "supernova" path)
  */
 @Path("myresource")
-public class MyResourceEndpoint {
+public class DefaultResourceEndpoint {
 
     /**
      * Method handling HTTP GET requests. The returned object will be sent
