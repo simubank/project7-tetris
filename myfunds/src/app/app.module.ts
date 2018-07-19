@@ -3,23 +3,35 @@ import { NgModule } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { InvestmentsComponent } from './investments/investments.component';
 import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
+import { InvestmentsService } from './investments/investments.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvestmentsComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    InvestmentsService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {
 

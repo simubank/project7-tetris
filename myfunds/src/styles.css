@@ -1,5 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
-/* Master Styles */
+a {
+  color: #038203;
+}
+
+a:hover {
+  color: #038203;
+}
+/*
+!* You can add global styles to this file, and also import other style files *!
+!* Master Styles *!
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
@@ -39,7 +47,7 @@ button:disabled {
   cursor: auto;
 }
 
-/* Navigation link styles */
+!* Navigation link styles *!
 nav a {
   padding: 5px 10px;
   text-decoration: none;
@@ -60,14 +68,15 @@ nav a.active {
   color: #039be5;
 }
 
-/* everywhere else */
+!* everywhere else *!
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
 
 
-/*
+!*
 Copyright 2017-2018 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
+*!
 */

@@ -1,21 +1,34 @@
-import { Component } from '@angular/core';
-import { TestServiceService } from '../test-service.service';
+import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+import { InvestmentsService } from './investments.service';
 
 @Component({
-  template: `
-    <p>This is the investments page woo</p>
-  `
+  selector: 'app-investments',
+  templateUrl: './investments.component.html',
+  styleUrls: ['./investments.component.css']
 })
 export class InvestmentsComponent implements OnInit {
 
+  tempVar: string; // bounded
+
+  constructor(private router: Router, private investmentsService: InvestmentsService) {
+
+  }
+
   ngOnInit() {
-    this.getUserData();
+    console.log('initialized');
   }
 
-  getUserData(): void {
-    data = testServiceService.getUserInfo();
-    console.log('data retrieved:', data);
+  getChartData(): void {
+    this.investmentsService.getPieGraphData()
+      .subscribe( data => {
+        console.log('retrieved the following data:', data);
+      });
   }
 
+  onSubmit() {
+    console.log('Submit!');
 
+    this.getChartData();
+  }
 }
