@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ChartModule } from 'angular-highcharts';
 
 import { AppComponent } from './app.component';
 import { InvestmentsComponent } from './investments/investments.component';
@@ -24,7 +25,8 @@ import { InvestmentsService } from './investments/investments.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartModule
   ],
   providers: [
     InvestmentsService

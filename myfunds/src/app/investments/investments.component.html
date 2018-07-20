@@ -1,9 +1,18 @@
 <div>
+  <h1>My Investments</h1>
   <p>Hello from the investments component :-)</p>
-  <p>This is just for testing right now.</p>
-
+  <p>This is just for testing right now</p>
+  <p>Use the below form to test http requests</p>
   <form (ngSubmit)="onSubmit()">
     <input type="text" [(ngModel)]="tempVar" name="temp">
     <button type="submit" style="padding-left: 5px">Submit</button>
   </form>
+</div>
+<hr/>
+
+<div class="padding-top: 100px">
+  <div [chart]="chart"></div>
+
+  <div [chart]="pieChart"></div>
+
 </div>

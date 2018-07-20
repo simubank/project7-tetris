@@ -5,6 +5,25 @@ a {
 a:hover {
   color: #038203;
 }
+
+h1 {
+  color: #1a5336;
+  font-weight: 100;
+  line-height: 1.31;
+}
+
+.btn.btn-success {
+  background-color: #008a00;
+  font-size: larger;
+  padding: 10px 70px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #008a00;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #008a00;
+  outline: 0 none;
+}
 /*
 !* You can add global styles to this file, and also import other style files *!
 !* Master Styles *!
