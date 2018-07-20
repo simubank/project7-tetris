@@ -9,6 +9,8 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.util.EntityUtils;
 
 public class BankRestApi extends BankRestApiModel {
@@ -33,11 +35,6 @@ public class BankRestApi extends BankRestApiModel {
 		request.addHeader(BankRestApiModel.getHeaderAuthKey(), BankRestApiModel.getHeaderAuthValue());
 		HttpResponse response = client.execute(request);
 		return response;
-	}
-	@Override
-	public void updateAccountBalance(Object JSON) throws Exception {
-		// TODO: IMPLEMENT
-		
 	}
 	
 	
@@ -90,6 +87,9 @@ public class BankRestApi extends BankRestApiModel {
 		return response;
 	}
 	
+	
+
+	
 	//==================================================================Transfer==========================================================================
 	@Override
 	public HttpResponse getTransferReceipt(String ID) throws Exception {
@@ -102,7 +102,35 @@ public class BankRestApi extends BankRestApiModel {
 		return response;
 	}
 	
-	
+	@Override
+	public HttpResponse transfer(String amount, String fromID, String toID) throws Exception {
+	    
+        HttpClientFactory factory = new HttpClientFactory();
+		HttpClient client = factory.getHttpsClient();		
+		HttpPost post = new HttpPost("https://dev.botsfinancial.com/api/transfers");
+		//header:
+		post.addHeader(BankRestApiModel.getHeaderAuthKey(), BankRestApiModel.getHeaderAuthValue());
+		
+		//don't change format below:
+		String json = "{\r\n" + 
+				"  \"amount\": "+ amount +",\r\n" + 
+				"  \"currency\": \"CAD\",\r\n" + 
+				"  \"fromAccountID\": \""+ fromID +"\",\r\n" + 
+				"  \"receipt\": \"{}\",\r\n" + 
+				"  \"toAccountID\": \""+toID +"\"\r\n" + 
+				"}";
+				
+		StringEntity entity = new StringEntity(json);
+		post.setEntity(entity);
+	    post.setHeader("Accept", "application/json");
+	    post.setHeader("Content-type", "application/json");
+	 
+	    HttpResponse response = client.execute(post);
+	    //assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+	    //client.close();
+		return response;
+    }
+
 	
 	
 	//===================================================================misc================================================================================
@@ -115,6 +143,4 @@ public class BankRestApi extends BankRestApiModel {
 				String jsonString = EntityUtils.toString(entity, StandardCharsets.UTF_8);
 				System.out.println("HTTPS RESPONSE: " + jsonString);	
 	}
-
-	
 }

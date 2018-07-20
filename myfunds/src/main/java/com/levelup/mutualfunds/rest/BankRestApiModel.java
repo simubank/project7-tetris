@@ -26,11 +26,7 @@ public abstract class BankRestApiModel {
 	//account ----------------------------------------------------------------------------------------------------------------------------
 	public abstract HttpResponse getAccount(String AccountID) throws Exception;
 	public abstract HttpResponse getAllTransactions(String AccountID) throws Exception;
-	public abstract void updateAccountBalance(Object JSON) throws Exception;
-			/* PATCH
-			 * {
-			  "balance": 0
-			}*/
+
 
 	
 	//customer ----------------------------------------------------------------------------------------------------------------------------
@@ -43,7 +39,7 @@ public abstract class BankRestApiModel {
 	public abstract HttpResponse getTransaction(String ID) throws Exception;
 	
 	//transfer----------------------------------------------------------------------------------------------------------------------------
-	public void transfer(Object JSON) {
+	public abstract HttpResponse transfer(String amount, String fromID, String toID) throws Exception;
 /*	POST
  * 			{
 			  "amount": 0,
@@ -52,7 +48,6 @@ public abstract class BankRestApiModel {
 			  "receipt": "string",
 			  "toAccountID": "string"
 			}	*/
-	}
 	public abstract HttpResponse getTransferReceipt(String ID) throws Exception;	
 	
 	
