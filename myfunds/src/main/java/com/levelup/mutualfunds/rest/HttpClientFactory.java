@@ -1,21 +1,15 @@
 package com.levelup.mutualfunds.rest;
 
 import java.security.SecureRandom;
-import java.util.List;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
 
-import org.apache.http.Header;
-import org.apache.http.HttpHeaders;
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLContexts;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicHeader;
-
-import jersey.repackaged.com.google.common.collect.Lists;
 
 public class HttpClientFactory {
 	  	private static CloseableHttpClient client;

@@ -10,17 +10,17 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
 
-public class testHTTPS {
-	
+public class BankRestApi extends BankRestApiModel {
 
-	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
+	//get account by id
+	@Override
+	public void getAccount(String AccountID) throws Exception {
 		HttpClientFactory factory = new HttpClientFactory();
 		HttpClient client = factory.getHttpsClient();		
 
-		HttpGet request = new HttpGet("https://dev.botsfinancial.com/api/accounts/self");
+		HttpGet request = new HttpGet("https://dev.botsfinancial.com/api/accounts/" + AccountID);
 		//header:
-		request.addHeader(BankRestApiModel.getHeaderKey(), BankRestApiModel.getHeaderValue());
+		request.addHeader(BankRestApiModel.getHeaderAuthKey(), BankRestApiModel.getHeaderAuthValue());
 		HttpResponse response = client.execute(request);
 		HttpEntity entity = response.getEntity();
 
@@ -31,4 +31,5 @@ public class testHTTPS {
 				String jsonString = EntityUtils.toString(entity, StandardCharsets.UTF_8);
 				System.out.println("HTTPS RESPONSE: " + jsonString);							
 	}
+	
 }
