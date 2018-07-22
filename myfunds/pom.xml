@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.levelup</groupId>
-    <artifactId>mutualfunds</artifactId>
+    <artifactId>myfunds</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mutualfunds</name>
+    <name>myfunds</name>
 
     <build>
-        <finalName>mutualfunds</finalName>
+        <finalName>myfunds</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
