@@ -29,15 +29,6 @@ public class HttpClientFactory {
 	        return client;
 	    }
 
-/*	    //custom header for Community banking:
-	    Header header = new BasicHeader(
-	    		  HttpHeaders.CONTENT_TYPE, "application/json");
-	    		List<Header> headers = Lists.newArrayList(header);
-	    		HttpClient client = HttpClients.custom()
-	    		  .setDefaultHeaders(headers).build();
-	    		HttpUriRequest request = RequestBuilder.get()
-	    		  .setUri(SAMPLE_URL).build();
-	    		client.execute(request);*/
 	    
 	    public static void releaseInstance() {
 	        client = null;
