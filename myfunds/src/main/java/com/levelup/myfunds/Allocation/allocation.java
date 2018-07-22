@@ -1,4 +1,4 @@
-package com.levelup.myfunds.allocation;
+package com.levelup.myfunds.Allocation;
 
 public class allocation {
 	private int age;
