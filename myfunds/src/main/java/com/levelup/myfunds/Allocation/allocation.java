@@ -15,6 +15,14 @@ public class allocation {
 		this.lowerAge = 20;
 	}
 	
+	public double processTransactions(double currBalance, double debits) {
+		double transfer_amt;
+		
+		transfer_amt = currBalance - debits;
+		
+		return transfer_amt;
+	}
+	
 	public double smartAllocation(boolean isRegProfile) {
 		double ce;
 		
@@ -34,6 +42,14 @@ public class allocation {
 		else {
 			return ce = 0;
 		}
+	}
+	
+	public boolean initiateTransfer(double amount) {
+		//call community bank POST transfer API here
+		//from DDA to investment account
+		
+		
+		return true;
 	}
 	
 	
