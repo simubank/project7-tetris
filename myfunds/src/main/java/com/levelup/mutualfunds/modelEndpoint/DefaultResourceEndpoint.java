@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
 import com.levelup.mutualfunds.model.Objects;
 
 /**
- * Root resource (exposed at "supernova" path)
+ * Root resource (exposed at "" path)
  */
 @Path("myresource")
 public class DefaultResourceEndpoint {

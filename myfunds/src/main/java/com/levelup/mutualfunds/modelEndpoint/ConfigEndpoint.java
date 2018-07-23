@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 public class ConfigEndpoint {
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
 	public String returnString() {
 		return "WebConfig reached";
 	}
