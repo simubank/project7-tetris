@@ -23,7 +23,7 @@ public class angularEP5 {
 		ObjectService service = new ObjectService();
 		return service.getCustomerByID(Frankie_ID);	
 	}
-	@Path("/customerAGe")
+	@Path("/customerAge")
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getCustomerAge() throws Exception {
