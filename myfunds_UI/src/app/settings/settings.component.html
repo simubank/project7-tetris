@@ -1,30 +1,49 @@
-<div>
-  <h1>Settings</h1>
+<div class="container">
+  <div class="row">
+    <div style="float: none; margin: 0 auto;">
+    <h1>Settings</h1>
 
-  <div style="background-color: #f5f9f7; padding: 30px; width: 600px">
-    <div>
-      <div><label>Display name</label></div>
-      <input class="form-control" type="text" value="Frankie">
+      <div style="background-color: #f5f9f7; padding: 30px; width: 600px">
+        <div style="padding-bottom: 25px">
+          <div>Display name</div>
+          <input class="form-control" type="text" value="Frankie">
+        </div>
+
+        <div>
+          <div class="float-left">
+            Toggle educational mode
+          </div>
+          <div class="float-right">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div>
+          <div class="float-left">
+            Toggle automatic transfers
+          </div>
+          <div class="float-right">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+
+        <div class="float-right" style="padding-top:25px">
+          <button type="button" class="btn btn-success" routerLink="/investments">
+            Save
+          </button>
+        </div>
+        <div class="clearfix"></div>
+
+      </div>
     </div>
-
-    <div>
-      Toggle educational mode
-      <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-      </label>
-    </div>
-
-    <div>
-      Toggle automatic transfers
-      <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-      </label>
-    </div>
-
-    <button type="button" class="btn btn-success" routerLink="/investments">
-      Save
-    </button>
   </div>
 </div>

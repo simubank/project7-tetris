@@ -33,7 +33,7 @@ export class InvestmentsComponent implements OnInit {
       type: 'line'
     },
     title: {
-      text: 'Growth History'
+      text: 'Investment Growth History'
     },
     credits: {
       enabled: false
@@ -52,31 +52,36 @@ export class InvestmentsComponent implements OnInit {
 
   pieChart = new Chart({
     chart: {
-/*      plotBackgroundColor: null,
-      plotBorderWidth: null,
-      plotShadow: false,*/
       type: 'pie'
     },
     title: {
-      text: 'Investment Breakdown'
+      text: ''
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true
+      }
     },
     series: [{
-      name: 'Brands',
+      name: 'Investment Categories',
      /* colorByPoint: true,*/
       data: [{
-        name: 'Mutual fun 2 <br> ',
+        name: 'CATEGORY 1<br> ',
         y: 61.41,
         sliced: true,
         selected: true
       },
       {
-        name: 'Mutual fund 1 <br> ',
+        name: 'CATEGORY 2<br> ',
         y: 34,
         sliced: true,
         selected: true
       },
       {
-        name: 'Bonds<br> ',
+        name: 'CATEGORY 3<br> ',
         y: 4,
         sliced: true,
         selected: true
@@ -109,13 +114,20 @@ export class InvestmentsComponent implements OnInit {
   getChartData(): void {
     let temp = this;
     this.investmentsService.getPieGraphData()
-      .subscribe( data => {
+      .subscribe(
+        data => {this.retrievedData = data},
+        err => console.error(err),
+        () => console.log("done:", this.retrievedData)
+      );
+
+
+    /*      .subscribe( data => {
             // console.log('retrieved the following data:', data);
         this.retrievedData = (data);
         console.log("got the data");
         console.log('received:', this.retrievedData.text());
 
-      });
+      });*/
 
   }
 
