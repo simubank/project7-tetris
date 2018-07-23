@@ -4,7 +4,7 @@ public class UserScore {
 	private double maxSavingScore;
 	
 	public UserScore() {
-		this.maxSavingScore= 0;
+		this.maxSavingScore= 100;
 	}
 
 	public double getUserScore() {
