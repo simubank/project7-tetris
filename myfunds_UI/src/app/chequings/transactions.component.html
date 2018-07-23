@@ -1,18 +1,59 @@
 <div>
-  <h1>Transactions</h1>
+  <h1>Transaction History</h1>
 
-  <div>
+  <div style="background-color: #19b14b; color:white; padding: 30px; margin: 0px;">
     <h2>Congratulations!</h2>
     <div>
-      You have reached your maximum saving score. As a reward, we have added ${{rewardAmount}} to your investment account. Keep saving to keep earning!
+      You have reached your maximum saving score. As a reward, we have added {{rewardAmount}} points to your TD MyFunds investment account. Keep saving to keep earning!
     </div>
   </div>
 
-  <form (ngSubmit)="onSubmit()">
-    <input type="text" [(ngModel)]="tempVar" name="temp">
-    <button type="submit" style="padding-left: 5px">Submit</button>
-  </form>
-</div>
 
-<div>
+<!--  Account balance display-->
+  <div style="padding-top:25px">
+    <div class="row">
+      <div style="float: none; margin: 0 auto;">
+        <h4>Savings Balance</h4>
+
+      </div>
+    </div>
+    <div class="row">
+      <div style="float: none; margin: 0 auto;">
+        <h1>${{accountBalance}}</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Transaction table-->
+  <div *ngIf="dataReady" style="padding-top:25px">
+    <table class="table table-hover <!--table-sm-->">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Deposit Amount</th>
+        <th scope="col">Feedback</th>
+      </tr>
+      </thead>
+
+
+      <tbody>
+      <tr *ngFor="let data of transactionData">
+        <td>
+          {{data[columns[0]] | date:'longDate'}}
+        </td>
+        <td>
+          ${{data[columns[1]]}}
+        </td>
+        <td>
+          <input type="checkbox">
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+
+
 </div>

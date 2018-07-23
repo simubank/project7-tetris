@@ -25,6 +25,8 @@ export class InvestmentsComponent implements OnInit {
 
   tempVar: string; // bounded
 
+  userName;
+
   retrievedData;
 
   // https://www.npmjs.com/package/angular-highcharts
@@ -33,18 +35,28 @@ export class InvestmentsComponent implements OnInit {
       type: 'line'
     },
     title: {
-      text: 'Investment Growth History'
+      text: ''
+    },
+    yAxis: {
+      title: 'DOLLARS'
     },
     credits: {
       enabled: false
     },
+/*    plotOptions: {
+      line: {
+        marker: false
+      }
+    },*/
     series: [
       {
         name: 'Amount Invested',
+        color: '#434348',
         data: this.savingsData
       },
       {
         name: 'Investment Growth',
+        color: '#19b14b',
         data: this.growthData
       }
     ]
@@ -69,20 +81,20 @@ export class InvestmentsComponent implements OnInit {
       name: 'Investment Categories',
      /* colorByPoint: true,*/
       data: [{
-        name: 'CATEGORY 1<br> ',
-        y: 61.41,
+        name: 'EQUITY FUND<br> ',
+        y: 55,
         sliced: true,
         selected: true
       },
       {
-        name: 'CATEGORY 2<br> ',
-        y: 34,
+        name: 'BOND FUND<br> ',
+        y: 30,
         sliced: true,
         selected: true
       },
       {
-        name: 'CATEGORY 3<br> ',
-        y: 4,
+        name: 'INDEX FUND<br> ',
+        y: 15,
         sliced: true,
         selected: true
       }]
@@ -109,7 +121,20 @@ export class InvestmentsComponent implements OnInit {
 
   ngOnInit() {
     console.log('initialized');
+    this.getUserName();
   }
+
+  getUserName(): void {
+    this.investmentsService.getUserName()
+      .subscribe(
+        data => {
+          this.userName = data.substr(0,data.indexOf(' '));
+        },
+        err => console.error(err),
+        () => console.log("done:", this.retrievedData)
+      )
+  }
+
 
   getChartData(): void {
     let temp = this;
