@@ -6,7 +6,7 @@ const httpOptions = {
 };
 
 @Injectable()
-export class InvestmentsService {
+export class TransactionsService {
 
   constructor(private http: HttpClient) {}
 
@@ -14,6 +14,6 @@ export class InvestmentsService {
 
   // Just testing with this...
   public getPieGraphData() {
-    return this.http.get<string>(this.apiRoot);
+    return this.http.get(this.apiRoot);
   }
 }

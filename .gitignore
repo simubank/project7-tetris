@@ -1,3 +1,5 @@
+/myfunds/bin
+
 *target*
 *.war
 *.ear
