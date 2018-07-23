@@ -25,6 +25,8 @@ export class InvestmentsComponent implements OnInit {
 
   tempVar: string; // bounded
 
+  retrievedData;
+
   // https://www.npmjs.com/package/angular-highcharts
   chart = new Chart({
     chart: {
@@ -58,36 +60,23 @@ export class InvestmentsComponent implements OnInit {
     title: {
       text: 'Investment Breakdown'
     },
-    tooltip: {
-      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    plotOptions: {
-      pie: {
-        allowPointSelect: true,
-        cursor: 'pointer',
-        dataLabels: {
-          enabled: false,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-        }
-      }
-    },
     series: [{
       name: 'Brands',
-      colorByPoint: true,
+     /* colorByPoint: true,*/
       data: [{
-        name: 'Investment 1: <br> ',
+        name: 'Mutual fun 2 <br> ',
         y: 61.41,
         sliced: true,
         selected: true
       },
       {
-        name: 'Investment 2: <br> ',
+        name: 'Mutual fund 1 <br> ',
         y: 34,
         sliced: true,
         selected: true
       },
       {
-        name: 'Investment 3: <br> ',
+        name: 'Bonds<br> ',
         y: 4,
         sliced: true,
         selected: true
@@ -118,15 +107,22 @@ export class InvestmentsComponent implements OnInit {
   }
 
   getChartData(): void {
+    let temp = this;
     this.investmentsService.getPieGraphData()
       .subscribe( data => {
-        console.log('retrieved the following data:', data);
+            // console.log('retrieved the following data:', data);
+        this.retrievedData = (data);
+        console.log("got the data");
+        console.log('received:', this.retrievedData.text());
+
       });
+
   }
 
   onSubmit() {
-    console.log('Submit!');
-
     this.getChartData();
+    console.log('ONSUBMIT');
+
+
   }
 }

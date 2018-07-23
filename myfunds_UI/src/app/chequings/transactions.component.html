@@ -1,0 +1,18 @@
+<div>
+  <h1>Transactions</h1>
+
+  <div>
+    <h2>Congratulations!</h2>
+    <div>
+      You have reached your maximum saving score. As a reward, we have added ${{rewardAmount}} to your investment account. Keep saving to keep earning!
+    </div>
+  </div>
+
+  <form (ngSubmit)="onSubmit()">
+    <input type="text" [(ngModel)]="tempVar" name="temp">
+    <button type="submit" style="padding-left: 5px">Submit</button>
+  </form>
+</div>
+
+<div>
+</div>

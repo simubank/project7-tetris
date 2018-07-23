@@ -13,13 +13,18 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { InvestmentsService } from './investments/investments.service';
+import {TransactionsService} from "./chequings/transactions.service";
+import {TransactionsComponent} from "./chequings/transactions.component";
+import {SettingsComponent} from "./settings/settings.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     InvestmentsComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    TransactionsComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,8 @@ import { InvestmentsService } from './investments/investments.service';
     ChartModule
   ],
   providers: [
-    InvestmentsService
+    InvestmentsService,
+    TransactionsService
   ],
   bootstrap: [
     AppComponent

@@ -1,6 +1,7 @@
 <div>
-  <h1>My Investments</h1>
-  <p>Hello from the investments component :-)</p>
+  <h1>Hello, Frankie</h1>
+  <p>Welcome to your TD MyFunds dashboard.</p>
+  <p>Here, you can see details on your current investments.</p>
   <p>This is just for testing right now</p>
   <p>Use the below form to test http requests</p>
   <form (ngSubmit)="onSubmit()">
@@ -11,8 +12,9 @@
 <hr/>
 
 <div class="padding-top: 100px">
+  <div [chart]="pieChart"></div>
+
   <div [chart]="chart"></div>
 
-  <div [chart]="pieChart"></div>
 
 </div>
