@@ -36,4 +36,23 @@ public class ObjectService {
 		return obj;
 	}
 	
+	//this section get fetch customer demographics from com.bank API
+	//getting customer name
+	public String getCustomerByID(String customerToken) {
+		String custName = "Frankie Karaffa";
+		
+		//custName = http request here
+		
+		return custName;
+		
+	}
+	//getting customer age
+	public int getCustomerAge(String customerToken) {
+		int age = 25;
+		
+		//age = http request here
+		
+		return age;
+	}
+	
 }
