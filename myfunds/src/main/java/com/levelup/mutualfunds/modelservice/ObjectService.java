@@ -33,8 +33,7 @@ public class ObjectService {
 	public double getBalanceDDA(String customerToken) {
 		double currBalance = 1;
 		
-		// currBalance = http request here
-		
+		// currBalance = http request here		
 		return currBalance;
 	}
 	

@@ -10,7 +10,7 @@ import com.levelup.mutualfunds.model.Objects;
 /**
  * Root resource (exposed at "" path)
  */
-@Path("myresource")
+@Path("/myresource")
 public class DefaultResourceEndpoint {
 
     /**
