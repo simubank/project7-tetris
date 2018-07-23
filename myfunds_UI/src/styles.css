@@ -16,6 +16,10 @@ h2, h4 {
   font-weight:100;
 }
 
+h6 {
+  font-weight: 400;
+}
+
 .btn.btn-success {
   background-color: #008a00;
   font-size: larger;

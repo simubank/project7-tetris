@@ -1,33 +1,37 @@
-<div>
-  <h1>Hello, {{userName}}</h1>
-  <p>Welcome to your TD MyFunds dashboard.</p>
-  <p>Here, you can see details on your current investments.</p>
+<div  style="padding-bottom:150px">
 
-
-<!--  <p>This is just for testing right now</p>
-  <p>Use the below form to test http requests</p>
-  <form (ngSubmit)="onSubmit()">
-    <input type="text" [(ngModel)]="tempVar" name="temp">
-    <button type="submit" style="padding-left: 5px">Submit</button>
-  </form>-->
-
-</div>
-
-
-<hr/>
-
-<div class="padding-top: 100px">
   <div>
-    <h2 style->Investments by Category</h2>
-    <div [chart]="pieChart"></div>
+    <h1>Hello, {{userName}}</h1>
+    <!--<p>Welcome to your TD MyFunds dashboard.</p>
+    <p>Here, you can see details on your current investments.</p>-->
+
+
+    <!--  <p>This is just for testing right now</p>
+      <p>Use the below form to test http requests</p>
+      <form (ngSubmit)="onSubmit()">
+        <input type="text" [(ngModel)]="tempVar" name="temp">
+        <button type="submit" style="padding-left: 5px">Submit</button>
+      </form>-->
+
   </div>
 
-  <div style="padding-top:100px">
-    <div style="padding-bottom:25px">
-      <h2>Investment Growth History</h2>
-      From January 1, 2018 to July 24, 2018
+
+  <hr/>
+
+  <div class="padding-top: 100px">
+    <div>
+      <h2 style->Investments by Category</h2>
+      <div [chart]="pieChart"></div>
     </div>
 
-    <div [chart]="chart"></div>
+    <div style="padding-top:100px">
+      <div style="padding-bottom:25px">
+        <h2>Investment Growth History</h2>
+        From January 1, 2018 to July 24, 2018
+      </div>
+
+      <div [chart]="chart"></div>
+    </div>
   </div>
+
 </div>

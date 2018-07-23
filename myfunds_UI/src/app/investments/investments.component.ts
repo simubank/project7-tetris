@@ -37,9 +37,6 @@ export class InvestmentsComponent implements OnInit {
     title: {
       text: ''
     },
-    yAxis: {
-      title: 'DOLLARS'
-    },
     credits: {
       enabled: false
     },

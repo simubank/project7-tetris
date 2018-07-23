@@ -12,7 +12,7 @@ export class TransactionsComponent implements OnInit {
   rewardAmount = 50;
 
   //Get these from service
-  transactionData;
+  transactionData: any;
   accountBalance;
   dataReady=false;
 
@@ -31,7 +31,7 @@ export class TransactionsComponent implements OnInit {
   let temp = this;
   this.transactionsService.getTransactionData()
     .subscribe(
-      data => {
+      (data:any) => {
         this.transactionData = data.result;
       },
       err => console.error(err),
@@ -55,7 +55,7 @@ export class TransactionsComponent implements OnInit {
   getAccountBalance() {
     this.transactionsService.getAccountBalance()
       .subscribe(
-        data => this.accountBalance = data.result.bankAccount.balance,
+        (data:any) => this.accountBalance = data.result.bankAccount.balance,
         err => console.error(err),
         () => {console.log(this.accountBalance)}
   )

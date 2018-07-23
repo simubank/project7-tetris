@@ -5,46 +5,60 @@
 
       <div style="background-color: #f5f9f7; padding: 30px; width: 600px">
         <div style="padding-bottom: 25px">
-          <div>Display name</div>
+          <h6>Display name</h6>
           <input class="form-control" type="text" value="Frankie">
         </div>
 
         <div>
-          <div class="float-left">
-            Toggle educational mode
+
+
+          <div>
+            <div class="float-left">
+              <h6>Toggle educational mode</h6>
+            </div>
+            <div class="float-right">
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="clearfix"></div>
           </div>
-          <div class="float-right">
-            <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
+
+          <div>
+            <div class="float-left">
+              <h6>Toggle automatic transfers</h6>
+            </div>
+            <div class="float-right">
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="clearfix"></div>
           </div>
-          <div class="clearfix"></div>
+
+          <div>
+            <div class="float-left">
+              <h6>Account type</h6>
+            </div>
+            <div class="float-right">
+              <div class="radio">
+                <input type="radio" name="optradio" checked>
+                <label style="padding-left: 5px">Regular account</label>
+              </div>
+              <div class="radio">
+                <input type="radio" name="optradio">
+                <label style="padding-left: 5px">Risk adverse</label>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+
+
         </div>
 
-        <div>
-          <div class="float-left">
-            Toggle automatic transfers
-          </div>
-          <div class="float-right">
-            <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
-          </div>
-          <div class="clearfix"></div>
-        </div>
 
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown button
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </div>
 
         <div class="float-right" style="padding-top:25px">
           <button type="button" class="btn btn-success" routerLink="/investments">
