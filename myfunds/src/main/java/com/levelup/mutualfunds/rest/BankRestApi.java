@@ -146,8 +146,8 @@ public class BankRestApi extends BankRestApiModel {
 				System.out.println("HTTPS RESPONSE: " + jsonString);	
 	}
 	
-	public String responseToJsonString(HttpResponse response) throws IllegalStateException, IOException {
-		HttpEntity entity = response.getEntity();
+	public String responseToJsonString(String string) throws IllegalStateException, IOException {
+		HttpEntity entity = string.getEntity();
 		BufferedReader rd = new BufferedReader
 			    (new InputStreamReader(
 			    entity.getContent()));
@@ -160,5 +160,9 @@ public class BankRestApi extends BankRestApiModel {
 	public String getJsonString(HttpResponse response, String attributeName) throws IllegalStateException, IOException {
 		return EntityUtils.toString(response.getEntity());	
 		}
+	public String responseToJsonString(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

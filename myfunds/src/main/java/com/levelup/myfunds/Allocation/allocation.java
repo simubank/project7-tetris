@@ -43,6 +43,15 @@ public class allocation {
 		if(transfer_amt > currBalance)
 			transfer_amt = 0;
 		
+		//kick off smart allocation of investment for the transfer amount
+		boolean isReg;
+		if(age < upperAge)
+			isReg = true;
+		else
+			isReg = false;
+		
+		smartAllocation(isReg);
+		
 		return transfer_amt;
 	}
 	
