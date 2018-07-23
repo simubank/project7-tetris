@@ -6,6 +6,7 @@ public class allocation {
 	private double w;
 	private int upperAge;
 	private int lowerAge;
+	private String cust_token_ID;
 	
 	public allocation(int age, double c, double w) {
 		this.age = age;
@@ -13,6 +14,7 @@ public class allocation {
 		this.w = w;
 		this.upperAge = 65;
 		this.lowerAge = 20;
+		this.cust_token_ID = "c9ed522e-13a6-4272-a7f3-2b6dd79b33bc_e8ec148b-e09c-4e79-8c02-b7dfd5aed06d";
 	}
 	
 	public double processTransactions(double currBalance, double debits) {

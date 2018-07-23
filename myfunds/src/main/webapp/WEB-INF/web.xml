@@ -13,7 +13,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Jersey Web Application</servlet-name>
-    <url-pattern>/simplesave/*</url-pattern>
+    <url-pattern>/save/*</url-pattern>
   </servlet-mapping>
 <!--   <filter>
     <filter-name>CorsFilter</filter-name>
