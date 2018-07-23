@@ -10,31 +10,6 @@ import com.levelup.mutualfunds.model.Objects;
 
 public class ObjectService {
 
-	private static Map<Long, Objects> messages = new HashMap<>();
-	
-	public static Map<Long, Objects> getObjects() {
-		return messages;
-	}
-	
-	public List<Objects> getAll(){
-		Objects obj1 = new Objects("Config1 ", "mutual funds1 ", 1L);
-		Objects obj2 = new Objects("Config2 ", "mutual funds2 ", 2L);
-		Objects obj3 = new Objects("Config3 ", "mutual funds3 ", 2L);	
-		List<Objects> objList = new ArrayList<>();
-		objList.add(obj1);
-		objList.add(obj2);
-		objList.add(obj3);		
-		return objList;
-	}
-	public Objects getObj(long id) {
-		return messages.get(id);
-	}
-	
-	public Objects addObj(Objects obj) {
-		obj.setId(messages.size() + 1);
-		messages.put(obj.getId(), obj);
-		return obj;
-	}
 	
 	//this section get fetch customer demographics from com.bank API
 	//getting customer name
@@ -54,5 +29,14 @@ public class ObjectService {
 		
 		return age;
 	}
+	//getting customer current balance in DDA
+	public double getBalanceDDA(String customerToken) {
+		double currBalance = 1;
+		
+		// currBalance = http request here
+		
+		return currBalance;
+	}
+	
 	
 }
