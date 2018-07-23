@@ -1,15 +1,18 @@
 package com.levelup.mutualfunds.modelservice;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
 
-import com.levelup.mutualfunds.model.Objects;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.ParseException;
+import org.apache.http.util.EntityUtils;
+
+import com.levelup.mutualfunds.rest.BankRestApi;
 
 
 public class ObjectService {
 
+	BankRestApi api = new BankRestApi();
 	
 	//this section get fetch customer demographics from com.bank API
 	//getting customer name
@@ -35,7 +38,16 @@ public class ObjectService {
 		
 		// currBalance = http request here		
 		return currBalance;
-	}
+	}	
 	
+	
+	public String returnAttribute(HttpResponse response, String subString) {
+		String str = null;
+		try {
+			str = EntityUtils.toString(response.getEntity());
+		} catch (ParseException | IOException e) {
+		}		
+		return StringUtils.substringBetween(str, "\""+ subString + "\":", ",");		
+	}
 	
 }
