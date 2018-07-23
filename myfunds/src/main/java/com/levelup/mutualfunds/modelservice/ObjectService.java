@@ -48,7 +48,7 @@ public class ObjectService {
 	}
 	//getting customer age
 	public int getCustomerAge(String customerToken) {
-		int age = 25;
+		int age = 24;
 		
 		//age = http request here
 		
