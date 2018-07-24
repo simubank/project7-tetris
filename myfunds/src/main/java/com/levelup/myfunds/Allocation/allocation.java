@@ -1,5 +1,8 @@
 package com.levelup.myfunds.Allocation;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.apache.http.HttpResponse;
 
 import com.levelup.mutualfunds.rest.BankRestApi;
@@ -24,7 +27,7 @@ public class allocation {
 		this.contribution = 0;
 		this.totalWealth = sdaBalance;
 		this.wealthEquity = totalWealth/2.0;
-		this.wealthBonds = totalWealth/2.0;
+		this.wealthBonds = totalWealth - wealthEquity;
 		
 		this.upperAge = 65;
 		this.lowerAge = 20;
@@ -34,12 +37,30 @@ public class allocation {
 		this.Frankie_SDA = "c9ed522e-13a6-4272-a7f3-2b6dd79b33bc_edab1b18-7403-4085-ad8d-0d58b43ebeb2";
 	}
 	
-	public double processTransactions(double currBalance, double debits) {
+	
+	public double calcTotalExpenses(HashMap<String, Double> reqTransactions) {
+		double totalExpenses= 0;
+		
+		
+		
+		return totalExpenses;
+	}
+	
+	// this is the method that ties together other method calls in this class
+	public void processTransactions(double currBalance, double debits) {
 		double transfer_amt;
 		
 		transfer_amt = currBalance - debits;
 		
-		return transfer_amt;
+		
+		// call community bank API to POST the transfer
+		try {
+			initiateTransfer(transfer_amt);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public double smartAllocation() {
@@ -59,13 +80,14 @@ public class allocation {
 			return ce;
 		}
 		else {
+		//the risk adverse profile
 			return ce = 0;
 		}
 	}
 	
 	public boolean initiateTransfer(double amount) throws Exception {
 		//call community bank POST transfer API here
-		//from DDA to investment account
+		//from DDA to SDA investment account
 		BankRestApi apiObj = new BankRestApi();
 		String amtString = Double.toString(amount);
 		apiObj.transfer(amtString, Frankie_DDA, Frankie_SDA);
