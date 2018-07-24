@@ -13,7 +13,11 @@ export class TransactionsService {
   private apiRoot = 'http://localhost:8080/myfunds/save/angular';
 
   // Just testing with this...
-  public getPieGraphData() {
-    return this.http.get(this.apiRoot);
+  public getTransactionData() {
+    return this.http.get('http://localhost:8080/myfunds/save/angular3');
+  }
+
+  public getAccountBalance(){
+    return this.http.get('http://localhost:8080/myfunds/save/angular2');
   }
 }

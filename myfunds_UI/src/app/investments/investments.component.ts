@@ -25,6 +25,8 @@ export class InvestmentsComponent implements OnInit {
 
   tempVar: string; // bounded
 
+  userName;
+
   retrievedData;
 
   // https://www.npmjs.com/package/angular-highcharts
@@ -33,18 +35,25 @@ export class InvestmentsComponent implements OnInit {
       type: 'line'
     },
     title: {
-      text: 'Growth History'
+      text: ''
     },
     credits: {
       enabled: false
     },
+/*    plotOptions: {
+      line: {
+        marker: false
+      }
+    },*/
     series: [
       {
         name: 'Amount Invested',
+        color: '#434348',
         data: this.savingsData
       },
       {
         name: 'Investment Growth',
+        color: '#19b14b',
         data: this.growthData
       }
     ]
@@ -52,32 +61,37 @@ export class InvestmentsComponent implements OnInit {
 
   pieChart = new Chart({
     chart: {
-/*      plotBackgroundColor: null,
-      plotBorderWidth: null,
-      plotShadow: false,*/
       type: 'pie'
     },
     title: {
-      text: 'Investment Breakdown'
+      text: ''
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true
+      }
     },
     series: [{
-      name: 'Brands',
+      name: 'Investment Categories',
      /* colorByPoint: true,*/
       data: [{
-        name: 'Mutual fun 2 <br> ',
-        y: 61.41,
+        name: 'EQUITY FUND<br> ',
+        y: 55,
         sliced: true,
         selected: true
       },
       {
-        name: 'Mutual fund 1 <br> ',
-        y: 34,
+        name: 'BOND FUND<br> ',
+        y: 30,
         sliced: true,
         selected: true
       },
       {
-        name: 'Bonds<br> ',
-        y: 4,
+        name: 'INDEX FUND<br> ',
+        y: 15,
         sliced: true,
         selected: true
       }]
@@ -104,18 +118,38 @@ export class InvestmentsComponent implements OnInit {
 
   ngOnInit() {
     console.log('initialized');
+    this.getUserName();
   }
+
+  getUserName(): void {
+    this.investmentsService.getUserName()
+      .subscribe(
+        data => {
+          this.userName = data.substr(0,data.indexOf(' '));
+        },
+        err => console.error(err),
+        () => console.log("done:", this.retrievedData)
+      )
+  }
+
 
   getChartData(): void {
     let temp = this;
     this.investmentsService.getPieGraphData()
-      .subscribe( data => {
+      .subscribe(
+        data => {this.retrievedData = data},
+        err => console.error(err),
+        () => console.log("done:", this.retrievedData)
+      );
+
+
+    /*      .subscribe( data => {
             // console.log('retrieved the following data:', data);
         this.retrievedData = (data);
         console.log("got the data");
         console.log('received:', this.retrievedData.text());
 
-      });
+      });*/
 
   }
 

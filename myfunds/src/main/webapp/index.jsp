@@ -7,7 +7,8 @@
     <p><a href="save/angular1">angularEP1</a>
     <p><a href="save/angular2">angularEP2</a>
     <p><a href="save/angular3">angularEP3</a>
-    <p><a href="save/angular4">userscoreEP4</a>
+    <p><a href="save/userscore">userscoreEP4</a>
+    <p><a href="save/user">angularEP5</a>
     <p>Visit <a href="http://jersey.java.net">Project Jersey website</a>
     for more information on Jersey!
 </body>
