@@ -9,52 +9,70 @@
     </div>
   </div>
 
+  <div style="padding-top: 25px">
+    <button type="button" class="btn btn-success" (click)="initTransfer()">
+      Transfer
+    </button>
 
-<!--  Account balance display-->
+    <div *ngIf="transferSuccess" style="background-color: #19b14b; color:white; padding: 30px; margin: 0px;">
+      response received
+    </div>
+
+  </div>
+
   <div style="padding-top:25px">
     <div class="row">
       <div style="float: none; margin: 0 auto;">
-        <h4>Savings Balance</h4>
-
+        <div *ngIf="!dataReady">
+          <div class="loader"></div>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div style="float: none; margin: 0 auto;">
-        <h1>${{accountBalance}}</h1>
-      </div>
-    </div>
-  </div>
 
 
-  <!--Transaction table-->
   <div *ngIf="dataReady" style="padding-top:25px">
+    <!--  Account balance display-->
+    <div>
+      <div class="row">
+        <div style="float: none; margin: 0 auto;">
+          <h4>Savings Balance</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div style="float: none; margin: 0 auto;">
+          <h1>${{accountBalance}}</h1>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-top: 25px;">
+    <!--Transaction table-->
     <table class="table table-hover <!--table-sm-->">
+
       <thead class="thead-dark">
-      <tr>
-        <th scope="col">Date</th>
-        <th scope="col">Deposit Amount</th>
-        <th scope="col">Feedback</th>
-      </tr>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Deposit Amount</th>
+          <th scope="col">Feedback</th>
+        </tr>
       </thead>
 
-
       <tbody>
-      <tr *ngFor="let data of transactionData">
-        <td>
-          {{data[columns[0]] | date:'longDate'}}
-        </td>
-        <td>
-          ${{data[columns[1]]}}
-        </td>
-        <td>
-          <input type="checkbox">
-        </td>
-      </tr>
+        <tr *ngFor="let data of transactionData">
+          <td>
+            {{data[columns[0]] | date:'longDate'}}
+          </td>
+          <td>
+            ${{data[columns[1]]}}
+          </td>
+          <td>
+            <input type="checkbox">
+          </td>
+        </tr>
       </tbody>
 
     </table>
   </div>
-
 
 
 </div>

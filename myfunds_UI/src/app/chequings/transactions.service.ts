@@ -8,16 +8,26 @@ const httpOptions = {
 @Injectable()
 export class TransactionsService {
 
-  constructor(private http: HttpClient) {}
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*'
+    })
+  };
 
-  private apiRoot = 'http://localhost:8080/myfunds/save/angular';
+
+  constructor(private http: HttpClient) {}
 
   // Just testing with this...
   public getTransactionData() {
-    return this.http.get('http://localhost:8080/myfunds/save/angular3');
+    return this.http.get('http://localhost:8080/myfunds/save/angular3', this.httpOptions);
   }
 
   public getAccountBalance(){
-    return this.http.get('http://localhost:8080/myfunds/save/angular2');
+    return this.http.get('http://localhost:8080/myfunds/save/angular2', this.httpOptions);
+  }
+
+  public doTransfer(){
+    return this.http.get('http://localhost:8080/myfunds/save/user/transfer', {responseType: 'text'});
+
   }
 }

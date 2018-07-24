@@ -78,19 +78,19 @@ export class InvestmentsComponent implements OnInit {
       name: 'Investment Categories',
      /* colorByPoint: true,*/
       data: [{
-        name: 'EQUITY FUND<br> ',
+        name: '<strong>EQUITY FUND</strong><br>',
         y: 55,
         sliced: true,
         selected: true
       },
       {
-        name: 'BOND FUND<br> ',
+        name: '<strong>BOND FUND</strong><br> ',
         y: 30,
         sliced: true,
         selected: true
       },
       {
-        name: 'INDEX FUND<br> ',
+        name: '<strong>INDEX FUND</strong><br> ',
         y: 15,
         sliced: true,
         selected: true
@@ -125,7 +125,7 @@ export class InvestmentsComponent implements OnInit {
     this.investmentsService.getUserName()
       .subscribe(
         data => {
-          this.userName = data.substr(0,data.indexOf(' '));
+          this.userName = ', ' + data.substr(0,data.indexOf(' '));
         },
         err => console.error(err),
         () => console.log("done:", this.retrievedData)

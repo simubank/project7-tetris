@@ -15,6 +15,8 @@ export class TransactionsComponent implements OnInit {
   transactionData: any;
   accountBalance;
   dataReady=false;
+  transferResponse;
+  transferSuccess=false;
 
   columns = ["postDate", "currencyAmount"];
   constructor(private router: Router, private transactionsService: TransactionsService) {
@@ -61,5 +63,17 @@ export class TransactionsComponent implements OnInit {
   )
   }
 
+  initTransfer() {
+    this.transferSuccess=false;
+    this.transactionsService.doTransfer()
+      .subscribe(
+        (data:any) => this.transferResponse = data,
+        err => console.error(err),
+        () => {
+          console.log("transfer complete:", this.transferResponse);
+          this.transferSuccess=true;
+        }
+      );
+  }
 
 }

@@ -16,6 +16,7 @@ export class InvestmentsService {
   public getUserName() {
     return this.http.get('http://localhost:8080/myfunds/save/user/customerName', {responseType: 'text'});
   }
+
   // Just testing with this...
   public getPieGraphData() {
     return this.http.get<string>(this.apiRoot);
