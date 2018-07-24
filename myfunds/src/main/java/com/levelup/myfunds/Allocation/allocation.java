@@ -1,5 +1,9 @@
 package com.levelup.myfunds.Allocation;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,12 +19,15 @@ public class allocation {
 	private double totalWealth;
 	private int upperAge;
 	private int lowerAge;
-	public String Frankie_ID;
-	public String Frankie_DDA;
-	public String Frankie_SDA;
+	
 	public boolean isRegProfile;
 	public double wealthEquity;
 	public double wealthBonds;
+	public UserScore savingsScore;
+	
+	public String Frankie_ID;
+	public String Frankie_DDA;
+	public String Frankie_SDA;
 	
 	public allocation(int age, double sdaBalance) {
 		this.age = age;
@@ -28,6 +35,8 @@ public class allocation {
 		this.totalWealth = sdaBalance;
 		this.wealthEquity = totalWealth/2.0;
 		this.wealthBonds = totalWealth - wealthEquity;
+		savingsScore = new UserScore();
+		
 		
 		this.upperAge = 65;
 		this.lowerAge = 20;
@@ -38,20 +47,17 @@ public class allocation {
 	}
 	
 	
-	public double calcTotalExpenses(HashMap<String, Double> reqTransactions) {
-		double totalExpenses= 0;
+	public void runAllocation(double ddaBalance, ArrayList<Double> reqTransactions) {
+		double transfer_amt = 0;
+		
+		//calculate appropriate transfer amount
 		
 		
-		
-		return totalExpenses;
+		processTransactions(transfer_amt);
 	}
 	
-	// this is the method that ties together other method calls in this class
-	public void processTransactions(double currBalance, double debits) {
-		double transfer_amt;
-		
-		transfer_amt = currBalance - debits;
-		
+	// this is the method that ties together other allocation method calls in this class
+	public void processTransactions(double transfer_amt) {
 		
 		// call community bank API to POST the transfer
 		try {
@@ -59,30 +65,66 @@ public class allocation {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println("account transfer POST request failed");
 		}
+		
+		//update user savings score
+		savingsScore.updateMaxScore(transfer_amt);
+		
+		//update contribution, and calculate investment allocation
+		contribution = transfer_amt;
+		smartAllocation();
 		
 	}
 	
-	public double smartAllocation() {
-		double ce;
+	//determine and allocate transferred amount into investment options
+	//no return values, modify var in class
+	public void smartAllocation() {
 		
 		if(isRegProfile) {
-			if(age <= lowerAge) {
-				ce = contribution;
+		//regular risk appetite profile
+			if(age < lowerAge) {
+				//teen users
+				this.contriEquity = contribution;
+				this.contriBonds = 0;
 			}
 			else if( age > upperAge) {
-				ce = 0;
+				//retiree users
+				this.contriEquity = 0;
+				this.contriBonds = contribution;
 			}
 			else {
-				ce = contribution - 1;
+				this.contriBonds = Math.max(Math.min(contriBonds, contribution), 0);
+				this.contriEquity = contribution - this.contriBonds;
 			}
-			
-			return ce;
+		
 		}
 		else {
 		//the risk adverse profile
-			return ce = 0;
+			if(age > upperAge) {
+				this.contriEquity = 0;
+				this.contriBonds = contribution;
+			}
+			else {
+				this.contriBonds = Math.max(Math.min(contriBonds, contribution), 0);
+				this.contriEquity = contribution - this.contriBonds;
+			}
 		}
+		
+		//update existing wealth allocation figures, in future read/write to a database
+		//for now, write to a temp file
+		wealthBonds = wealthBonds + contriBonds;
+		wealthEquity = wealthEquity + contriEquity;
+		
+		File f;
+		try{
+		    f = File.createTempFile("wealthTracker", ".txt");
+		    BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+		    bw.write("Bonds:"+ wealthBonds + "\n" + "Equity:"+ wealthEquity);
+		    bw.close();
+		  } catch (IOException e){
+		     e.printStackTrace();
+		  }
 	}
 	
 	public boolean initiateTransfer(double amount) throws Exception {
