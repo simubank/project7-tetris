@@ -41,63 +41,7 @@ public class testHTTPS {
 		
 		
 		//testing the lists:
-		getAllPostDateOccurences("postDate");
-		getAllTransactionAmounts("currencyAmount");
-	}
-	
-	
-	
-	
-	public static List<String> getAllPostDateOccurences(String subString1) throws IllegalStateException, IOException, Exception {
-		BankRestApi apiCaller = new BankRestApi();
-		List<String>reqTransactionsDates = new ArrayList<>();
-		
-		String strToSearch = apiCaller.getJsonString(apiCaller.getAllTransactions(angularEP1.Frankie_DDA));	
-		Matcher matcher1 = Pattern.compile(
-		                            Pattern.quote("\"" + subString1 + "\":")
-		                            + "(.*?)"
-		                            + Pattern.quote(",")
-		                   ).matcher(strToSearch);
-/*		Matcher matcher2 = Pattern.compile(
-				Pattern.quote("\"" + subString2 + "\":")
-                + "(.*?)"
-                + Pattern.quote(",")
-       ).matcher(strToSearch);*/
-		
-		while(matcher1.find()){
-		    String match1 = matcher1.group(1);
-		    System.out.println(">"+match1+"<");
-		   		    
-		    reqTransactionsDates.add(match1);
-		}
-		return reqTransactionsDates;
-	}
-	
-	public static List<String> getAllTransactionAmounts(String subString1) throws IllegalStateException, IOException, Exception {
-		BankRestApi apiCaller = new BankRestApi();
-		List<String>reqTransactionsDates = new ArrayList<>();
-		
-		String strToSearch = apiCaller.getJsonString(apiCaller.getAllTransactions(angularEP1.Frankie_DDA));	
-		Matcher matcher1 = Pattern.compile(
-		                            Pattern.quote("\"" + subString1 + "\":")
-		                            + "(.*?)"
-		                            + Pattern.quote(",")
-		                   ).matcher(strToSearch);
-/*		Matcher matcher2 = Pattern.compile(
-				Pattern.quote("\"" + subString2 + "\":")
-                + "(.*?)"
-                + Pattern.quote(",")
-       ).matcher(strToSearch);*/
-		
-		while(matcher1.find()){
-		    String match1 = matcher1.group(1);
-		    System.out.println(">"+match1+"<");
-		   		    
-		    reqTransactionsDates.add(match1);
-		}
-		return reqTransactionsDates;
-	}
-	
-	
-	
+		service.getAllPostDateOccurences("postDate");
+		service.getAllTransactionAmounts("currencyAmount");
+	}	
 }
