@@ -102,4 +102,23 @@ public class ObjectService {
 		return reqTransactionAmounts;
 	}
 	
+	public static Double addAllAmmounts(String subString1) throws IllegalStateException, IOException, Exception {
+		BankRestApi apiCaller = new BankRestApi();
+		Double ammount = 0.0;
+		
+		String strToSearch = apiCaller.getJsonString(apiCaller.getAllTransactions(angularEP1.Frankie_DDA));	
+		Matcher matcher1 = Pattern.compile(
+		                            Pattern.quote("\"" + subString1 + "\":")
+		                            + "(.*?)"
+		                            + Pattern.quote(",")
+		                   ).matcher(strToSearch);
+		
+		while(matcher1.find()){
+		    String match1 = matcher1.group(1);
+		    //System.out.println(">"+match1+"<"); 
+		    ammount = ammount + Double.parseDouble(match1);
+		}
+		return ammount;
+	}
+	
 }

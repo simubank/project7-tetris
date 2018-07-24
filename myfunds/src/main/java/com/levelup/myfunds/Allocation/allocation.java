@@ -46,12 +46,11 @@ public class allocation {
 	}
 	
 	
-	public void runAllocation(double ddaBalance, ArrayList<Double> reqTransactions) {
-		double transfer_amt = 0;
-		
+	public void runAllocation(double ddaBalance, Double totalTransactionAmmount) {
+		Double totalMonths = 5.0;
+		double transfer_amt = totalTransactionAmmount/totalMonths;		
 		//calculate appropriate transfer amount
-		
-		
+				
 		processTransactions(transfer_amt);
 	}
 	

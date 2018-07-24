@@ -30,4 +30,11 @@ public class angularEP5 {
 		ObjectService service = new ObjectService();
 		return String.valueOf(service.getCustomerAge(Frankie_ID));	
 	}
+	
+	@Path("/transfer")
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public String initiateTransfer() throws Exception {
+		return "transfer reached";
+	}
 }

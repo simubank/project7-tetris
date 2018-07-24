@@ -2,15 +2,9 @@ package com.levelup.mutualfunds.rest;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.ParseException;
-import org.apache.http.util.EntityUtils;
 
 import com.levelup.mutualfunds.modelEndpoint.angularEP1;
 import com.levelup.mutualfunds.modelservice.ObjectService;
@@ -40,8 +34,13 @@ public class testHTTPS {
 		System.out.println("DATE: " + service.returnAttribute(apiCaller.getAllTransactions(angularEP1.Frankie_DDA), "postDate"));
 		
 		
+
 		//testing the lists:
 		service.getAllPostDateOccurences("postDate");
 		service.getAllTransactionAmounts("currencyAmount");
+	
+		System.out.println(service.addAllAmmounts("currencyAmount"));
+		
 	}	
+	
 }
