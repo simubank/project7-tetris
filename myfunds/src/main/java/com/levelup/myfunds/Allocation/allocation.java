@@ -16,13 +16,13 @@ public class allocation {
 	private double contribution;
 	public double contriEquity;
 	public double contriBonds;
-	private double totalWealth;
+	private static double totalWealth;
 	private int upperAge;
 	private int lowerAge;
 	
 	public boolean isRegProfile;
-	public double wealthEquity;
-	public double wealthBonds;
+	public static double wealthEquity = 0;
+	public static double wealthBonds = 0;
 	public UserScore savingsScore;
 	
 	public String Frankie_ID;
@@ -33,8 +33,7 @@ public class allocation {
 		this.age = age;
 		this.contribution = 0;
 		this.totalWealth = sdaBalance;
-		this.wealthEquity = totalWealth/2.0;
-		this.wealthBonds = totalWealth - wealthEquity;
+	
 		savingsScore = new UserScore();
 		
 		
