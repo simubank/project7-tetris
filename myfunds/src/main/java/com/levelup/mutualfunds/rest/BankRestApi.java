@@ -157,7 +157,7 @@ public class BankRestApi extends BankRestApiModel {
 	}
 	
 	//returns value of response as json string:
-	public String getJsonString(HttpResponse response, String attributeName) throws IllegalStateException, IOException {
+	public String getJsonString(HttpResponse response) throws IllegalStateException, IOException {
 		return EntityUtils.toString(response.getEntity());	
 		}
 	
