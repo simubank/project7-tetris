@@ -102,7 +102,7 @@ public class ObjectService {
 		return reqTransactionAmounts;
 	}
 	
-	public static Double addAllAmmounts(String subString1) throws IllegalStateException, IOException, Exception {
+	public Double addAllAmmounts(String subString1) throws IllegalStateException, IOException, Exception {
 		BankRestApi apiCaller = new BankRestApi();
 		Double ammount = 0.0;
 		
@@ -121,4 +121,13 @@ public class ObjectService {
 		return ammount;
 	}
 	
+	public Double currentDDABalance() throws Exception {
+		BankRestApi apiCaller = new BankRestApi();
+		return Double.parseDouble(returnAttribute(apiCaller.getAccount(angularEP1.Frankie_DDA), "balance"));	
+	}
+	
+	public Double currentSDABalance() throws Exception {
+		BankRestApi apiCaller = new BankRestApi();
+		return Double.parseDouble(returnAttribute(apiCaller.getAccount(angularEP1.Frankie_SDA), "balance"));	
+	}
 }

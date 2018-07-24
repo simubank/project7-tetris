@@ -4,10 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import org.apache.http.HttpResponse;
 
 import com.levelup.mutualfunds.rest.BankRestApi;
 
@@ -46,12 +42,21 @@ public class allocation {
 	}
 	
 	
-	public void runAllocation(double ddaBalance, Double totalTransactionAmmount) {
+	public double runAllocation(double ddaBalance, Double totalTransactionAmmount) {
 		Double totalMonths = 5.0;
 		double transfer_amt = totalTransactionAmmount/totalMonths;		
+		
 		//calculate appropriate transfer amount
+		// implement account over draft protection
+		if(transfer_amt > ddaBalance) {
+			transfer_amt = transfer_amt*0.1;
+			if(transfer_amt >= ddaBalance) {
+				transfer_amt = 0;
+			}
+		}
 				
 		processTransactions(transfer_amt);
+		return transfer_amt;
 	}
 	
 	// this is the method that ties together other allocation method calls in this class
